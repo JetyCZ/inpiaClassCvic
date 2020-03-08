@@ -1,0 +1,12 @@
+<html
+        xmlns:th="http://www.thymeleaf.org">
+<body>
+<form th:object="${issue}" th:action="@{/issuereportform}" method="post">
+    <h3>URL:</h3>
+    <input name="url" th:field="*{url}"/>
+    <h3>Description:</h3>
+    <textarea name="description" th:field="*{description}"/>
+    <input type="submit" value="Create issue">
+</form>
+</body>
+</html>

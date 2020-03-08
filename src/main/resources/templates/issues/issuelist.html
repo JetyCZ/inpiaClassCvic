@@ -1,0 +1,20 @@
+<html
+        xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Existing issues</h1>
+<h3><a href="/issuereportform">Create new issue</a></h3>
+<table>
+    <tr>
+        <th>URL</th>
+        <th>Description</th>
+    </tr>
+    <th:block th:each="issue : ${issues}">
+        <tr>
+            <td th:text="${issue.url}"></td>
+            <td th:text="${issue.description}"></td>
+        </tr>
+    </th:block>
+</table>
+
+</body>
+</html>
