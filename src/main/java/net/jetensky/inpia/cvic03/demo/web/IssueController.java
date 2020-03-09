@@ -30,6 +30,11 @@ public class IssueController {
     @PostMapping("/issuereportform")
     public String issueReportFormSubmitted(Issue issue, Model model) {
         issueService.add(issue);
+        return "redirect:/issues";
+    }
+
+    @GetMapping("/issues")
+    public String issues(Model model) {
         model.addAttribute("issues", issueService.findAll());
         return "issues/issuelist";
     }
