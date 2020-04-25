@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import java.lang.reflect.Field;
@@ -61,8 +62,9 @@ public class Creator {
                     Object propValue = FieldUtils.readField(field, entity);
                     final boolean notEmptyField = fieldHasAnnotation(field, NotEmpty.class);
                     boolean manyToOne = fieldHasAnnotation(field, ManyToOne.class);
+                    boolean id = fieldHasAnnotation(field, Id.class);
                     ;
-                    if (propValue == null) {
+                    if (propValue == null && !id) {
                         Class<?> fieldClass = field.getType();
                         if (fieldClass.isAssignableFrom(String.class)) {
                             propValue = "Test " + field.getName();
